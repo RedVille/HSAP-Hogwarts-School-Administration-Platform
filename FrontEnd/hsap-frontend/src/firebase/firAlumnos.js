@@ -27,7 +27,7 @@ export async function saveAlumno(matricula, nombre, casa){
 }
 
 //Regresa un arreglo con los alumnos
-export async function getAllAlumnos(matricula, nombre, casa){
+export async function getAllAlumnos(){
     const alumnosSnapshot = await getDocs(ref);
     const alumnosList = alumnosSnapshot.docs.map(doc => doc.data());
     return alumnosList;
