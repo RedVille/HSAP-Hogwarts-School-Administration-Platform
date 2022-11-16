@@ -40,4 +40,23 @@ export async function getAlumno(matricula){
     
     return querySnapshot.docs[0].data();
 }
+
+//cambia el alumno con la matricula
+export async function editAlumno(matricula, nombre, casa){
+    const q = query(ref, where("matricula", "==", String(matricula)), limit(1));
+    const querySnapshot = await getDocs(q);
+
+
+    await setDoc(doc(firestore, "alumnos", querySnapshot.docs[0].id), {
+        matricula: matricula,
+        nombre: nombre,
+        casa: casa,
+    });
+}
+
+//Elimina el alumno con la matricula
+export async function delAlumno(matricula){
+    const q = query(ref, where("matricula", "==", String(matricula)), limit(1));
+    const querySnapshot = await getDocs(q);
+    await deleteDoc(doc(firestore, "alumnos", querySnapshot.docs[0].id));
 }
