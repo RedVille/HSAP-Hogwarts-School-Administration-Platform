@@ -25,3 +25,19 @@ export async function saveAlumno(matricula, nombre, casa){
         }
     }
 }
+
+//Regresa un arreglo con los alumnos
+export async function getAllAlumnos(matricula, nombre, casa){
+    const alumnosSnapshot = await getDocs(ref);
+    const alumnosList = alumnosSnapshot.docs.map(doc => doc.data());
+    return alumnosList;
+}
+
+//Hace query con la matricula del alumno y devuelve el registro
+export async function getAlumno(matricula){
+    const q = query(ref, where("matricula", "==", String(matricula)), limit(1));
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs[0].data();
+}
+}
