@@ -23,4 +23,18 @@ export async function saveMateria(matricula, nombre){
             console.log(d);
         }
     }
+//Regresa un arreglo con todas las materias
+export async function getAllMateria(){
+    const materiaSnapshot = await getDocs(ref);
+    const materiaList = materiaSnapshot.docs.map(doc => doc.data());
+    return materiaList;
+}
+
+//Hace query con la matricula del materia y devuelve el registro
+export async function getMateria(matricula){
+    const q = query(ref, where("matricula", "==", String(matricula)), limit(1));
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs[0].data();
+}
 }
