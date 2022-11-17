@@ -23,6 +23,8 @@ export async function saveMateria(matricula, nombre){
             console.log(d);
         }
     }
+}
+
 //Regresa un arreglo con todas las materias
 export async function getAllMateria(){
     const materiaSnapshot = await getDocs(ref);
@@ -37,4 +39,22 @@ export async function getMateria(matricula){
     
     return querySnapshot.docs[0].data();
 }
+
+//Cambia el materia con la matricula
+export async function editMateria(matricula, nombre){
+    const q = query(ref, where("matricula", "==", String(matricula)), limit(1));
+    const querySnapshot = await getDocs(q);
+
+
+    await setDoc(doc(firestore, "materias", querySnapshot.docs[0].id), {
+        matricula: matricula,
+        nombre: nombre,
+    });
+}
+
+//Elimina el materia con la matricula
+export async function delMateria(matricula){
+    const q = query(ref, where("matricula", "==", String(matricula)), limit(1));
+    const querySnapshot = await getDocs(q);
+    await deleteDoc(doc(firestore, "materias", querySnapshot.docs[0].id));
 }
