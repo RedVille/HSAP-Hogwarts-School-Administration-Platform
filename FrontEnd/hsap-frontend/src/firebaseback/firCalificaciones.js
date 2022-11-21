@@ -1,5 +1,5 @@
 import { firestore } from "../firebase";
-import { addDoc, collection, getDocs, setDoc, doc, query, where, limit, deleteDoc } from '@firebase/firestore';
+import { addDoc, collection, getDocs, setDoc, doc, query, where, limit, deleteDoc, orderBy } from '@firebase/firestore';
 
 //import {useState, useEffect} from 'react'
 //import {doc, updateDoc, collection, query, onSnapshot, where} from "firebase/firestore"
@@ -9,24 +9,28 @@ const ref = collection(firestore, 'califs');
 // estado que tendrá todas las calificaciones de la base de datos
 // const [califs, setCalifs] = useState([])
 
-
 // crear calificación al momento de asignar un alumno a la materia
 export async function newCalif(idAlumno, idMateria) {
-    let data = {
-        final: 0.0,
-        idAlumno: idAlumno,
-        idMateria: idMateria,
-        parcial1: 0.0,
-        parcial2: 0.0,
-        parcial3: 0.0
-    }
-
     const q = query(ref, where('idCalif', '==', idAlumno), where('idMateria','==',idMateria), limit(1));
     const querySnapshot = await getDocs(q);
 
     if(querySnapshot.docs[0].exists()){
         console.log('Ya hay una calificación asociada con este alumno')
     } else {
+        //obtener el último id de la colección para generar el nuevo
+        q = query(ref, orderBy('idCalif', 'desc'), limit(1));
+        querySnapshot = await getDocs(q);
+
+        let data = {
+            final: 0.0,
+            idAlumno: idAlumno,
+            idCalif: querySnapshot.docs[0].idCalif + 1,
+            idMateria: idMateria,
+            parcial1: 0.0,
+            parcial2: 0.0,
+            parcial3: 0.0
+        }
+
         try {
             addDoc(ref, data);
         }catch(d){
@@ -45,9 +49,9 @@ export async function getCalifs(idMateria) {
 }
 
 // editar una calificación en específico
-export async function editCalif(id, p1, p2, p3) {
+export async function editCalif(idCalif, p1, p2, p3) {
     const final = ((p1 + p2 + p3)/3);
-    q = query(ref, where('idCalif', '==', id), limit(1));
+    q = query(ref, where('idCalif', '==', idCalif), limit(1));
     const querySnapshot = await getDocs(q);
 
     await setDoc(doc(firestore, 'califs', querySnapshot.docs[0].id),{
@@ -59,8 +63,8 @@ export async function editCalif(id, p1, p2, p3) {
 }
 
 // eliminar el registro cuando se desasocia un alumno con la materia
-export async function deleteCalif(idCalif, idMateria){
-    const q = query(ref, where('idCalif', '==', idCalif), where('idMateria','==',idMateria), limit(1));
+export async function deleteCalif(idCalif){
+    const q = query(ref, where('idCalif', '==', idCalif), limit(1));
     const querySnapshot = await getDocs(q);
     await deleteDoc(doc(firestore, 'califs', querySnapshot.docs[0].id));
 }
