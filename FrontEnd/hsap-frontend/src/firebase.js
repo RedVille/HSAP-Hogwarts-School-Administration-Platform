@@ -1,21 +1,20 @@
+// JavaScript
+// src/firebase.js
+import { initializeApp } from "firebase/app"
+import { getFirestore } from "firebase/firestore"
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-apiKey: "AIzaSyBQNKljvfu8Mzjm-wMo_nrf0pq0PTpLbp8",
-authDomain: "hsap-59a32.firebaseapp.com",
-projectId: "hsap-59a32",
-storageBucket: "hsap-59a32.appspot.com",
-messagingSenderId: "538919881877",
-appId: "1:538919881877:web:649cc30d19c690751a1f9c"
-};
+    apiKey: "AIzaSyDB8cfeFedLugAsIlqQTjRfk3FvpqsJ2VA",
+    authDomain: "hsap-cc2d8.firebaseapp.com",
+    projectId: "hsap-cc2d8",
+    storageBucket: "hsap-cc2d8.appspot.com",
+    messagingSenderId: "35281795056",
+    appId: "1:35281795056:web:37f665893cfac1c3848f35",
+    measurementId: "G-QZQM5SKSY7"
+  };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const firestore = getFirestore(app);
+const app = initializeApp(firebaseConfig)
+const firestore = getFirestore(app)
+
+export {firestore}
