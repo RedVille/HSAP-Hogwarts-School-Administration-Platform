@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
@@ -11,6 +11,16 @@ export default function Login() {
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
 
+  useEffect(() => {
+    setTimeout(() => {
+      //Verificar maestro en sesión
+      if (sessionStorage.getItem("login") != null) {
+        //Mandar página home
+        routeChange(`/home`);
+      }
+    }, 100);
+  });
+
   // setters
   function handleCorreoTextChange(event) {
     setCorreo(event.target.value);
@@ -20,6 +30,7 @@ export default function Login() {
     setContrasena(event.target.value);
   }
 
+  //Método cuando le dan clic al botón entrar
   function handleSubmit() {
     if (correo !== "" && contrasena !== "") {
       inicioSesion();
@@ -37,9 +48,12 @@ export default function Login() {
   //Metodo para iniciar sesión
   function inicioSesion() {
     getAllMaestros().then((value) => {
-      if (login(value, correo, contrasena)) {
+      let maestroLogin = login(value, correo, contrasena);
+      if (maestroLogin != null) {
+        // Almacena la información en sessionStorage
+        sessionStorage.setItem("login", maestroLogin.nombre);
         //Mandar otra página
-        routeChange();
+        routeChange(`/home`);
       } else {
         swal({
           title: "Credenciales incorrectas",
@@ -54,10 +68,9 @@ export default function Login() {
 
   //Navegación de páginas
   let navigate = useNavigate();
-  const routeChange = () => {
-    let path = `/home`;
+  function routeChange(path) {
     navigate(path);
-  };
+  }
 
   return (
     <Row>
