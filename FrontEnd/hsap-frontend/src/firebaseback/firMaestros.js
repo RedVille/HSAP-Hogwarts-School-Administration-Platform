@@ -14,6 +14,6 @@ export async function getAllMaestros(){
 export function login(maestrosList, email, password){
   const index = maestrosList.findIndex(maestro => maestro.email === email);
   if(index == -1 || maestrosList[index].password != password)
-    return false 
-  return true 
+    return null 
+  return maestrosList[index] 
 }
