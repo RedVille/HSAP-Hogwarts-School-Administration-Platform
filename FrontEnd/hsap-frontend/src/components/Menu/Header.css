@@ -1,0 +1,149 @@
+.icono-menu {
+  width: 40px;
+  height: 40px;
+}
+
+.icono-sidemenu {
+  width: 30px;
+  height: 30px;
+}
+
+.icono-logout {
+  width: 30px;
+  height: 30px;
+}
+
+.logo-nav {
+  width: 45px;
+  height: 45px;
+}
+
+.right-item {
+  margin-right: 30px;
+  float: right !important;
+}
+
+.center-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navbar {
+    background-color: #2E2A3E;
+    height: 80px;
+    display: flex;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.5);
+    align-items: center;
+  }
+  
+  .menu-bars {
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+  }
+  
+  .nav-menu {
+    background-color: #1B1722;
+    width: 400px;
+    height: 100vh;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    box-shadow: 0px 0px 1000px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+    transition: 350ms;
+  }
+  
+  .nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+  
+  .nav-text a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+  }
+  
+  .nav-text a:hover {
+    background-color: #1B1722;
+  }
+  
+  .nav-text-logout {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+    padding-bottom: 60px;
+    position: absolute;
+    bottom: 5%;
+    right: 40%;
+    transform: translate(0%, 0%);
+  }
+
+  .nav-text-logout a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+  }
+
+  .nav-text-logout a:hover {
+    background-color: #1B1722;
+  }
+  
+  .nav-menu-items {
+    width: 100%;
+  }
+  
+  .navbar-toggle {
+    background-color: #1b172200;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    margin-bottom: 80px;
+    padding-right: 40px;
+    padding-left: 20px;
+    align-items: center;
+  }
+
+  .icono-sidemenu-menu {
+    position: absolute;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    float: right !important;
+  }
+  
+  span {
+    margin-left: 16px;
+  }

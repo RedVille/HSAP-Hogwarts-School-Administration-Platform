@@ -1,5 +1,9 @@
 import React from 'react';
+import './Alumnos.css'
 
 export default function Alumnos() {
-    return(<a></a>);
+    return(
+
+        <a>aaaaaaaaa</a>
+    );
 }
