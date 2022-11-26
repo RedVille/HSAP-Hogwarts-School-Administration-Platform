@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SideManu';
 import './Header.css';
@@ -6,9 +6,6 @@ import '../../index.css'
 import { IconContext } from 'react-icons';
 import menuIcon from '../../assets/img/Menu/menu.svg'
 import logoIcon from '../../assets/img/hsapLogo.svg'
-import alumnoIcon from '../../assets/img/Menu/menuAlumnos.svg'
-import materiaIcon from '../../assets/img/Menu/menuMaterias.svg'
-import logoutIcon from '../../assets/img/Menu/logout.svg'
 
 function Header() {
 
