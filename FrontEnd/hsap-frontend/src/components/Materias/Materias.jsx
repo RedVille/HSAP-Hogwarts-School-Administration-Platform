@@ -33,24 +33,20 @@ export default function Materias() {
       cargarMaterias();
     } else {
       swal({
-        title: "Agregar materia",
+        title: "Agregar Materia",
         content: {
           element: "div",
           attributes: {
             innerHTML: `<input class="inputForm" oninput="window.changeNombre(this.value)" placeholder="Nombre Completo"/>`,
           },
         },
-        closeOnClickOutside: false,
-        closeOnEsc: false,
-        allowOutsideClick: false,
         buttons: {
           confirm: { text: "Ok", className: "btnOk" },
         },
       }).then(async function() {
         if (nombre !== "") {
           resultado = await new AddMateria().send(
-            Math.floor(Math.random() * 10000 + 1).toString(),
-            nombre
+            Math.floor(Math.random() * 10000 + 1).toString(), nombre
           );
 
           if (resultado) {
