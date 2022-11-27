@@ -10,19 +10,20 @@ export default function AlumnoItem(props) {
   const alumno = props.alumno;
   const cargarAlumnos = props.cargarAlumnos;
 
-  function editarAlumno() {}
+  function editarAlumno() {
+  }
 
-  async function eliminarAlumno(event) {
+  async function eliminarAlumno() {
     swal({
       title: "Eliminar Alumno",
-      text:"¿Seguro que desea eliminar al alumno con matrícula " + event.target.title + "?",
+      text:"¿Seguro que desea eliminar al alumno con matrícula " + alumno.matricula + "?",
       buttons: {
         confirm: { text: "Sí", className: "btnOk" },
         cancel: "No",
       },
     }).then(async function(resultado) {
       if (resultado) {
-        await new DeleteAlumno().send(event.target.title);
+        await new DeleteAlumno().send(alumno.matricula);
         cargarAlumnos();
         swal({title: "Alumno Eliminado", buttons: { confirm: { text: "Ok", className: "btnOk" }}});
       }
@@ -39,8 +40,8 @@ export default function AlumnoItem(props) {
           <div className="div-icono" onClick={editarAlumno}>
             <img className="icono" src={editar} alt="" />
           </div>
-          <div title={alumno.matricula} className="div-icono eliminar" onClick={eliminarAlumno}>
-            <img title={alumno.matricula} className="icono" src={eliminar}/>
+          <div className="div-icono eliminar" onClick={eliminarAlumno}>
+            <img className="icono" src={eliminar}/>
           </div>
         </Row>
       </td>
