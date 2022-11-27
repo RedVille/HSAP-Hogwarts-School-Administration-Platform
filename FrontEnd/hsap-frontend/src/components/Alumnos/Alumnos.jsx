@@ -27,7 +27,7 @@ export default function Alumnos() {
   });
 
   const items = (alumnos === null ? [] : alumnos).map((alumno) => (
-    <AlumnoItem alumno={alumno} />
+    <AlumnoItem alumno={alumno} cargarAlumnos={cargarAlumnos}/>
   ));
 
   async function agregarAlumno() {

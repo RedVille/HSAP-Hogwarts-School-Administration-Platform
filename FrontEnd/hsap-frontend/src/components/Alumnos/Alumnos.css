@@ -145,7 +145,7 @@ td:last-child {
 /*formulario*/
 .swal-overlay--show-modal .swal-modal {
   width: 600px;
-  height: 370px !important;
+  height: fit-content !important;
 }
 
 .inputForm{
