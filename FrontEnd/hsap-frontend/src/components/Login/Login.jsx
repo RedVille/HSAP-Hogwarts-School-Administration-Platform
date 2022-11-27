@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import "./Login.css";
-import { getAllMaestros, login } from "../../firebaseback/firMaestros";
+import { getAllMaestros, login } from "../../firebase/Maestros";
 import imageLogin from "../../assets/img/imageLogin.png";
 import logoLogin from "../../assets/img/logoLogin.svg";
 

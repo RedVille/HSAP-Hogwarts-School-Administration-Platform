@@ -1,17 +1,32 @@
-import React from "react";
-import { Table, Row } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import MateriaItem from "./MateriaItem";
+import GetMaterias from "../../firebase/Materias/GetMaterias";
+import { Table } from "react-bootstrap";
 import "./Materias.css";
 import iconoAgregar from "../../assets/img/iconoAgregar.svg";
-import editar from "../../assets/img/editar.svg";
-import asignar from "../../assets/img/asignar.svg";
-import calificaciones from "../../assets/img/calificaciones.svg";
-import eliminar from "../../assets/img/eliminar.svg";
 
 export default function Materias() {
+
+  const [materias, setMaterias] = useState(null);
+
+  async function cargarMaterias() {
+    const result = await new GetMaterias().send();
+    setMaterias(result);
+  }
+
+  useEffect(() => {
+    if (materias === null) {
+      cargarMaterias();
+    }
+  });
+  
+  const items = (materias === null ? [] : materias).map(materia => (
+    <MateriaItem materia={materia} />
+  ));
+
   return (
     <div className="fondo">
       <div className="align-end">
-        {" "}
         <button className="btn-agregar">Agregar <img className="iconoAgregar" src={iconoAgregar} alt="" /></button>
       </div>
       <div className="divMaterias">
@@ -24,115 +39,7 @@ export default function Materias() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        <tr>
-          <td>00000</td>
-          <td>Nombre</td>
-          <td>
-            <Row className="text-center" >
-            <div className="div-icono"><img className="icono" src={editar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={asignar} alt="" /></div>
-            <div className="div-icono"><img className="icono" src={calificaciones} alt="" /></div>
-            <div className="div-icono eliminar"><img className="icono" src={eliminar} alt="" /></div>
-            </Row>
-          </td>
-        </tr>
-        
+        {items}    
       </tbody>
     </Table>
       </div>
