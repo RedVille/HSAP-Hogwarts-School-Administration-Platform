@@ -121,6 +121,7 @@ td:last-child {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
 .div-icono {
   margin-left: 1rem;
   background: #2e2a3e;
@@ -139,4 +140,46 @@ td:last-child {
 .icono {
   width: 1.2rem;
   height: 1.2rem;
+}
+
+/*formulario*/
+.swal-overlay--show-modal .swal-modal {
+  width: 600px;
+  height: 370px !important;
+}
+
+.inputForm{
+  margin-top: 0 !important;
+}
+
+.selectForm{
+  width: 80%;
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.29) !important;
+  border-radius: 5px;
+  color: white;
+  border: none !important;
+  outline: none;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-family: "Raleway", sans-serif;
+  line-height: 26px;
+}
+
+.selectForm::placeholder {
+  color: #ffffff;
+}
+
+.btnOk {
+  margin-top: 1.8rem !important;
+  width: 120px;
+  height: 50px;
+  background: #241e39;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+option {
+  background: #2e2a3e;
+  color: white;
 }
