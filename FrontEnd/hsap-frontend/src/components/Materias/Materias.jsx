@@ -25,7 +25,7 @@ export default function Materias() {
   });
 
   const items = (materias === null ? [] : materias).map((materia) => (
-    <MateriaItem materia={materia} />
+    <MateriaItem materia={materia} cargarMaterias={cargarMaterias} />
   ));
 
   async function agregarMateria() {
@@ -60,7 +60,7 @@ export default function Materias() {
                 confirm: { text: "Ok", className: "btnOk" },
               },
             });
-            
+
             cargarMaterias();
           }
 
