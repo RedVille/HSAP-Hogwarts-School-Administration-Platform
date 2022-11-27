@@ -1,26 +1,33 @@
 import { firestore } from "../../firebase";
 import { addDoc, collection, getDocs, query, where, limit } from "@firebase/firestore";
-import Alumno from "../../classes/Alumno";
 
 const ref = collection(firestore, "alumnos");
 
 export default class AddAlumno {
     async send(matricula, nombre, casa) {
 
-        let newAlumno = new Alumno(matricula, nombre, casa);
-
+        let newAlumno = {
+            matricula: matricula,
+            nombre: nombre,
+            casa: casa,
+        }
         const q = query(ref, where("matricula", "==", String(matricula)), limit(1));
         const querySnapshot = await getDocs(q);
 
-        if(querySnapshot.docs[0].exists()){
-            console.log("Esa matricula ya existe");
-        } else {
+        if(querySnapshot.docs[0] === undefined)
+        {
+            // Se agrega nuevo alumno
             try {
-                console.log(newAlumno);
                 addDoc(ref, newAlumno);
-            }catch(d){
-                console.log(d);
+                return 1;
+            }catch(e){
+                return 3;
+            }
+        }else{
+            if(querySnapshot.docs[0].exists()){
+                return 0;
             }
         }
+        
     }    
 }

@@ -16,12 +16,5 @@ export const SidebarData = [
     icon: materiaIcon,
     cName: 'nav-text',
     cImage: 'icono-menu'
-  },
-  {
-    title: 'Cerrar Sesión',
-    path: '/',
-    icon: logoutIcon,
-    cName: 'nav-text-logout',
-    cImage: 'icono-logout'
   }
 ];
