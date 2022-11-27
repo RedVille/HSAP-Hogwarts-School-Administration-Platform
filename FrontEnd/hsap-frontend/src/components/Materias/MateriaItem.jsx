@@ -7,6 +7,7 @@ import asignar from "../../assets/img/asignar.svg";
 import calificaciones from "../../assets/img/calificaciones.svg";
 import eliminar from "../../assets/img/eliminar.svg";
 import UpdateMateria from "../../firebase/Materias/UpdateMateria";
+import DeleteMateria from "../../firebase/Materias/DeleteMateria";
 
 export default function MateriaItem(props) {
     const materia = props.materia;
@@ -60,6 +61,25 @@ export default function MateriaItem(props) {
     }
 
     function eliminarMateria() {
+      swal({
+        title: "Eliminar Materia",
+        text: "¿Seguro que desea eliminar la materia con matrícula " + materia.matricula + "?",
+        buttons: {
+          confirm: { text: "Sí", className: "btnOk" },
+          cancel: "No",
+        },
+      }).then(async function(resultado) {
+        if (resultado) {
+          await new DeleteMateria().send(materia.matricula);
+  
+          cargarMaterias();
+          
+          swal({
+            title: "Materia Eliminada",
+            buttons: { confirm: { text: "Ok", className: "btnOk" } },
+          });
+        }
+      });
     }
     
     return (
