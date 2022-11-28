@@ -8,6 +8,7 @@ export default class UpdateCalificacion {
         const final = ((parcial1 + parcial2 + parcial3)/3);
         const q = query(ref, where('idCalif', '==', idCalif), limit(1));
         const querySnapshot = await getDocs(q);
+        console.log(querySnapshot);
 
         await setDoc(doc(firestore, 'califs', querySnapshot.docs[0].id),{
             final: final,
