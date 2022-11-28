@@ -12,10 +12,8 @@ export default function AlumnoItem(props) {
   const cargarAlumnos = props.cargarAlumnos;
 
   function editarAlumno() {
-    console.log(alumno);
-
     swal({
-      title: "Agregar alumno",
+      title: "Editar Alumno",
       content: {
         element: "div",
         attributes: {

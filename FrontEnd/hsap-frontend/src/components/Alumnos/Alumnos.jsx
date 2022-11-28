@@ -1,5 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useEffect } from "react";
 import AlumnoItem from "./AlumnoItem";
 import GetAlumnos from "../../firebase/Alumnos/GetAlumnos";
 import { Table } from "react-bootstrap";
@@ -35,7 +34,7 @@ export default function Alumnos() {
       cargarAlumnos();
     } else {
       swal({
-        title: "Agregar alumno",
+        title: "Agregar Alumno",
         content: {
           element: "div",
           attributes: {
@@ -51,9 +50,6 @@ export default function Alumnos() {
                 </select>`,
           },
         },
-        closeOnClickOutside: false,
-        closeOnEsc: false,
-        allowOutsideClick: false,
         buttons: {
           confirm: { text: "Ok", className: "btnOk" },
         },
