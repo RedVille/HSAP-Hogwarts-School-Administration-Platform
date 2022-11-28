@@ -20,5 +20,17 @@ export default class GetCalificacion {
             calificacion.parcial3,
             calificacion.final
         );
-    }    
+    } 
+    
+    async sendAlumno(idAlumno,idMateria) {
+        const calificacionesSnapshot = await getDocs(ref);
+        const calificacionesList = calificacionesSnapshot.docs.map( (doc) => ( {...doc.data()} ) );
+
+        var bandera = false;
+        calificacionesList.map(calificacion => {
+            if(calificacion.idAlumno === idAlumno && calificacion.idMateria === idMateria) bandera = true;
+        })
+
+        return bandera;
+    }
 }
