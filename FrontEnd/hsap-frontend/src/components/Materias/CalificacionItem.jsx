@@ -69,8 +69,8 @@ export default function CalificacionItem(props) {
     });
 
     function asignarCalif() {
-        console.log("aaaaaaaaa")
-        new UpdateCalificacion().send(calificacion.idCalif,p1,p2,p3);
+        console.log(calificacion.idCalif)
+        new UpdateCalificacion().send(calificacion.id,p1,p2,p3);
         //window.location.reload();
     }
 
