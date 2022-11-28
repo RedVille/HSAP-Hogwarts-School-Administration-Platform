@@ -1,5 +1,4 @@
-import { firestore } from "../../firebase";
-import { collection, getDocs } from "@firebase/firestore";
+import { firestore } from "../../firebase";import { collection, getDocs, query, where } from "@firebase/firestore";
 import Calificacion from "../../classes/Calificacion";
 
 const ref = collection(firestore, "calificaciones");

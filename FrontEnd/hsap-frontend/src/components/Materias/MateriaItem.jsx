@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Row } from "react-bootstrap";
 import swal from "sweetalert";
 import "./Materias.css";
@@ -62,6 +63,7 @@ export default function MateriaItem(props) {
     }
 
     function irCalificaciones() {
+      routeChange('/calificaciones/' + materia.matricula);
     }
 
     function eliminarMateria() {
@@ -85,7 +87,13 @@ export default function MateriaItem(props) {
         }
       });
     }
-    
+
+    //Navegación de páginas
+    let navigate = useNavigate();
+    function routeChange(path) {
+      navigate(path);
+    }
+      
     return (
         <tr>
           <td>{materia.matricula}</td>
