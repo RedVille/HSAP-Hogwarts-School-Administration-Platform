@@ -8,10 +8,13 @@ import calificaciones from "../../assets/img/calificaciones.svg";
 import eliminar from "../../assets/img/eliminar.svg";
 import UpdateMateria from "../../firebase/Materias/UpdateMateria";
 import DeleteMateria from "../../firebase/Materias/DeleteMateria";
+import { useNavigate } from "react-router-dom";
 
 export default function MateriaItem(props) {
     const materia = props.materia;
     const cargarMaterias = props.cargarMaterias;
+
+    let navigate = useNavigate();
 
     function editarMateria() {
       swal({
@@ -55,6 +58,7 @@ export default function MateriaItem(props) {
     }
 
     function asignarMateria() {
+      navigate("/asignar/"+materia.matricula+"/"+materia.nombre);
     }
 
     function irCalificaciones() {
