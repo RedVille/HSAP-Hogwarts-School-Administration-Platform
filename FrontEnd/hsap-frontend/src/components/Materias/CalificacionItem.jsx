@@ -39,7 +39,6 @@ export default function CalificacionItem(props) {
     }
 
     function handleSubmit() {
-        console.log("aaaaaaaaaaa")
         asignarCalif();
         if (p1 !== "" && p2 !== "" && p3 !== "") {
             //asignarCalif();
@@ -69,8 +68,7 @@ export default function CalificacionItem(props) {
     });
 
     function asignarCalif() {
-        console.log(calificacion.idCalif)
-        new UpdateCalificacion().send(calificacion.id,p1,p2,p3);
+        new UpdateCalificacion().send(calificacion.idCalif,p1,p2,p3);
         //window.location.reload();
     }
 
