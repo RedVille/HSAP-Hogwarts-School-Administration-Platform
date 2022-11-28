@@ -52,7 +52,7 @@ function Header() {
                 onClick={showSidebar}
               />
             </Link>
-            <h3 className="titulos center-item">{paginaActual}</h3>
+            <h3 className="titulos center-item">HSAP</h3>
             <Link to="/Home" className="right-item menu-bars">
               <img className="logo-nav" src={logoIcon} />
             </Link>

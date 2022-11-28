@@ -18,7 +18,7 @@ export default class AddCalificacion {
               let data = {
                   final: 0.0,
                   idAlumno: idAlumno,
-                  idCalif: querySnapshot2.docs[0].data().idCalif + 1,
+                  idCalif: Math.floor(Math.random() * 10000 + 1).toString(),
                   idMateria: idMateria,
                   parcial1: 0.0,
                   parcial2: 0.0,
