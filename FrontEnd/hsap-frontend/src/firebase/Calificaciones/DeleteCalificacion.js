@@ -1,14 +1,25 @@
 import { firestore } from "../../firebase";
-import { collection, getDocs, doc, query, where, limit, deleteDoc } from "@firebase/firestore";
+import { collection, getDocs, doc, deleteDoc,} from "@firebase/firestore";
 
 const ref = collection(firestore, "calificaciones");
 
 export default class DeleteCalificacion {
-    async send(idCalif) {
+  async send(idAlumno, idMateria) {
+    const calificacionesSnapshot = await getDocs(ref);
 
-        const q = query(ref, where("idCalif", "==", String(idCalif)), limit(1));
-        const querySnapshot = await getDocs(q);
+    var idCalif = "";
 
-        await deleteDoc(doc(firestore, "calificaciones", querySnapshot.docs[0].id));
-    }    
+    const querySnapshot = calificacionesSnapshot.docs.map((doc) => {
+        if(doc._document.data.value.mapValue.fields.idAlumno.stringValue === idAlumno & doc._document.data.value.mapValue.fields.idMateria.stringValue === idMateria){
+            idCalif = doc.id
+        }
+    })
+
+    if (idCalif !== "") {
+      await deleteDoc(doc(firestore, "calificaciones", idCalif));
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

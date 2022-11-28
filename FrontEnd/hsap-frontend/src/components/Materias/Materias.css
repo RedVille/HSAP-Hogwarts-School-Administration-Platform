@@ -140,3 +140,36 @@ td:last-child {
   width: 1.2rem;
   height: 1.2rem;
 }
+
+/*Asignar Materia Page */
+.tituloMateria {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  color: white;
+  margin-top: 2.3rem;
+  text-align: center;
+}
+
+.btnAsignar {
+  width: 100%;
+  height: 35px;
+  background: #2e2a3e;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  font-family: "Raleway";
+  font-style: normal;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+
+
+.btnDesasignar {
+  background: #5b3030;
+}
+
+.asignar-accion {
+  width: 16% !important;
+}

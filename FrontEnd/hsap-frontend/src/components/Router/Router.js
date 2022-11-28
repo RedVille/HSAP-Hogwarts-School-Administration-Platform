@@ -5,6 +5,7 @@ import AlumnosPage from "../../Pages/AlumnosPage";
 import MateriasPage from "../../Pages/MateriasPage";
 import LoginPage from "../../Pages/LoginPage";
 import CalificacionesPage from "../../Pages/CalificacionesPage"
+import AsignarPage from "../../Pages/AsignarPage";
 
 export default function Router() {
   return (
@@ -17,6 +18,7 @@ export default function Router() {
             <Route path="/alumnos" element={<AlumnosPage />} />
             <Route path="/materias" element={<MateriasPage />} />
             <Route path="/calificaciones/:matricula" element={<CalificacionesPage />} />
+            <Route path="/asignar/:matricula/:nombre" element={<AsignarPage />} />
           </Routes>
         </div>
       </BrowserRouter>
